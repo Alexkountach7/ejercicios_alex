@@ -1,0 +1,84 @@
+package org.example;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
+public class actividad_1_clase {
+    static void main() {
+        Scanner sc = new Scanner(System.in);
+        int modo;
+        int año_nacimiento_int=0;
+        int año_actual=0;
+        final int año_minimo = 1900;
+        LocalDateTime fecha = LocalDateTime.now();
+        año_actual = fecha.getYear();
+        System.out.println("elige un modo");
+        System.out.println("[1] - año de nacimiento");
+        System.out.println("[2] - Edad");
+        System.out.println("-----------------------------");
+
+        if (sc.hasNextInt()) {
+            modo = sc.nextInt();
+
+        } else {
+            System.out.println("introduce un valor valido....");
+            return;
+        }
+
+        if (modo == 1) {
+            System.out.println("introduce tu año de nacimiento....");
+            String año_nacimiento = sc.next();
+            sc.close();
+
+            try {
+                año_nacimiento_int = Integer.parseInt(año_nacimiento);
+            } catch (Exception err) {
+                System.out.println("el formato introducido para el año no es correcto");
+                return;
+            }
+
+
+        } else if (modo == 2) {
+            System.out.println("introduce tu edad....");
+            String año_nacimiento = sc.next();
+            int edad =0;
+            if (sc.hasNextInt()){
+                edad = sc.nextInt();
+            }else {
+                System.out.println("formato incorrecto");
+                return;
+            }
+            if (edad>=0) {
+                año_nacimiento_int = año_actual - edad;
+
+            }
+        }else {
+                System.out.println("el modo no existe");
+                return;
+        }
+
+        if (año_nacimiento_int >= año_minimo && año_nacimiento_int <= año_actual) {
+            if (año_nacimiento_int <= 1927) {
+                System.out.println("generacion no bautizada");
+            } else if (año_nacimiento_int <= 1928 && año_nacimiento_int <= 1944) {
+                System.out.println("generacion silent");
+
+            } else if (año_nacimiento_int >= 1945 && año_nacimiento_int <= 1964) {
+                System.out.println("generacion boomer");
+
+
+            } else if (año_nacimiento_int >= 1965 && año_nacimiento_int <= 1981) {
+                System.out.println("generacion x");
+
+            } else if (año_nacimiento_int >= 1982 && año_nacimiento_int <= 1994) {
+                System.out.println("generacion milenial");
+
+            } else {
+                System.out.println("generacion z ");
+            }
+        }
+
+        }
+    }
+
