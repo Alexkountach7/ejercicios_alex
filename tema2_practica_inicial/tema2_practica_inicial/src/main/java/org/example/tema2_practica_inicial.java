@@ -5,17 +5,32 @@ import java.util.Scanner;
 public class tema2_practica_inicial {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int multiplicando;
-        int multiplicador;
+        int multiplicando=0;
+        int multiplicador=0;
         int resultado;
+        boolean repetir = false;
         do {
-            System.out.print("introduce el multiplicando (3 cifras): ");
-            multiplicando = sc.nextInt();
-            System.out.print("introduce el multiplicador (3 cifras): ");
-            multiplicador = sc.nextInt();
-            if ((multiplicador>-100 && multiplicador<100) || (multiplicando>-100 && multiplicando<100) || multiplicador>999 || multiplicador<-999 || multiplicando>999 || multiplicando<-999){
-                System.out.println("ERROR: introduce un numero valido");
+            try {
+                System.out.print("introduce el multiplicando (3 cifras): ");
+                multiplicando = sc.nextInt();
+                System.out.print("introduce el multiplicador (3 cifras): ");
+                multiplicador = sc.nextInt();
+                repetir = false;
+
+
+                if ((multiplicador > -100 && multiplicador < 100) || (multiplicando > -100 && multiplicando < 100) || multiplicador > 999 || multiplicador < -999 || multiplicando > 999 || multiplicando < -999) {
+                    System.out.println("ERROR: introduce un numero valido");
+                }
+            } catch (Exception err) {
+                System.out.println("ERROR introduce un valor valido");
+                repetir = true;
+                sc.nextLine();
             }
+
+
+        while (repetir);
+
+
 
         }while ((multiplicador>-100 && multiplicador<100) || (multiplicando>-100 && multiplicando<100) || multiplicador>999 || multiplicador<-999 || multiplicando>999 || multiplicando<-999);
         resultado = multiplicando * multiplicador;
@@ -62,6 +77,7 @@ public class tema2_practica_inicial {
 
     }
 }
+
 
 //// Aqui tengo el bloque del multiplicando
 //        String numero2 = Integer.toString(multiplicando);
